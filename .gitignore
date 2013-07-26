@@ -7,10 +7,10 @@
 *.egg
 *.egg-info
 dist
+bin
 build
 eggs
 parts
-bin
 var
 sdist
 develop-eggs
@@ -33,3 +33,14 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# vim backup files
+*~
+
+# svn & OS X
+.svn
+.DS_Store
+
+# eraseme
+*eraseme*
+erase.*
