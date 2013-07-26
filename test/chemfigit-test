@@ -7,6 +7,7 @@ runs the manual tests without the need to build and install
 import os
 import sys
 import shutil
+import logging
 
 sys.path.insert(0, "..")
 
@@ -14,8 +15,14 @@ import chemfigit
 
 if __name__ == "__main__":
 
+  logging.basicConfig(level=logging.INFO)
+
+  logging.info("%%%%%%%%%%%%%%%%%%%% testing %%%%%%%%%%%%%%%%%%%%")
+
   if os.path.exists('output'):
+    logging.info("Removing 'output' directory.")
     shutil.rmtree('output')
 
+  logging.info("Running _chemfigit()")
   chemfigit._chemfigit._chemfigit()
 

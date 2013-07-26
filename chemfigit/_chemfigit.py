@@ -125,7 +125,7 @@ def chemfigit(config):
   # setup paths
   cfg['cwd'] = os.getcwd()
   cfg['start_time'] = time.time()
-  cfg['temp_base'] = str(cfg['start_time'])
+  cfg['temp_base'] = "%014.2f" % cfg['start_time']
   cfg['temp_dir'] = os.path.join(tempfile.gettempdir(),
                                  program,
                                  cfg['temp_base'])
