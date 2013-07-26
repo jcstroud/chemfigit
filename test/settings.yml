@@ -7,11 +7,11 @@ tex_file : tex/ChemMove.tex
 # tex preamble file; use null or None for no preamble
 preamble : include/Preamble.tex
 
-# list of output formats (png, pdf, and/or svg)
-output_formats : [pdf, svg, png]
-
 # destination directory for output formats
 dest_dir : output/
+
+# list of output formats (png, pdf, and/or svg)
+output_formats : [pdf, svg, png]
 
 # pixels per inch for raster (bitmap) images
 raster_density : 300

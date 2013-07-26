@@ -5,6 +5,11 @@
     - str
     - "texfile.tex"
     - "tex file to process"
+- dest_dir :
+    - str
+    - "."
+    - "destination directory for output formats"
+    - "."
 - preamble :
     - "optional_file"
     - "preamble.tex"
@@ -15,11 +20,6 @@
     - ["pdf", "svg"]
     - "list of output formats (png, pdf, and/or svg)"
     - ["pdf"]
-- dest_dir :
-    - str
-    - "."
-    - "destination directory for output formats"
-    - "."
 - raster_density :
     - int
     - 300
@@ -61,22 +61,22 @@
 - pdflatex :
     - str
     - "pdflatex"
-    - "pdflatex executable"
+    - "path to the pdflatex executable"
     - "pdflatex"
 - convert :
     - str
     - "convert"
-    - "converter that produces bitmap images"
+    - "path to imagemagick's convert for png, etc."
     - "convert"
 - pdf2svg :
     - str
     - "pdf2svg"
-    - "converter that produces svg files"
+    - "path to pdf2svg, the converter that produces svg files"
     - "pdf2svg"
 - pdfcrop :
     - str
     - "pdfcrop"
-    - "program that crops pdf files"
+    - "path to pdfcrop, the program that crops pdf files"
     - "pdfcrop"
 - log_level :
     - ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]

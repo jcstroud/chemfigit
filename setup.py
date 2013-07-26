@@ -26,5 +26,5 @@ setup(name = info['PACKAGE'],
             'Programming Language :: Python :: 2.7', ],
       entry_points = {
          'console_scripts' : [
-            'chemfigit = chemfigit:_chemfigit']}
+            'chemfigit = chemfigit:_chemfigit._chemfigit']}
       )

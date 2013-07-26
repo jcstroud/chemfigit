@@ -7,4 +7,4 @@ Copyright (c) 2013, James C. Stroud; All rights reserved.
 
 from _version import __version__
 
-from _chemfigit import _chemfigit
+import _chemfigit
