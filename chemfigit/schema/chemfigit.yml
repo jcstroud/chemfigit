@@ -1,0 +1,85 @@
+%YAML 1.2
+---
+!!omap
+- tex_file :
+    - str
+    - "texfile.tex"
+    - "tex file to process"
+- preamble :
+    - "optional_file"
+    - "preamble.tex"
+    - "tex preamble file; use null or None for no preamble"
+    - null
+- output_formats :
+    - "output_formats"
+    - ["pdf", "svg"]
+    - "list of output formats (png, pdf, and/or svg)"
+    - ["pdf"]
+- dest_dir :
+    - str
+    - "."
+    - "destination directory for output formats"
+    - "."
+- raster_density :
+    - int
+    - 300
+    - "pixels per inch for raster (bitmap) images"
+    - 300
+- raster_quality :
+    - int
+    - 100
+    - "quality of raster (bitmap) images"
+    - 100
+- raster_antialias :
+    - bool
+    - True
+    - "antialias raster (btimap) images (True/False)"
+    - True
+- font_size :
+    - [10, 11, 12]
+    - 12
+    - "size of document font in pt"
+    - 12
+- paperwidth :
+    - str
+    - "30in"
+    - "width of canvas paper (units should be acceptable
+      to the geometry package)"
+    - "30in"
+- paperheight :
+    - str
+    - "30in"
+    - "height of canvas paper (units should be acceptable
+      to the geometry package)"
+    - "30in"
+- margin :
+    - str
+    - "5in"
+    - "margin of paper canvas (units should be acceptable
+      to the geometry package)"
+    - "5in"
+- pdflatex :
+    - str
+    - "pdflatex"
+    - "pdflatex executable"
+    - "pdflatex"
+- convert :
+    - str
+    - "convert"
+    - "converter that produces bitmap images"
+    - "convert"
+- pdf2svg :
+    - str
+    - "pdf2svg"
+    - "converter that produces svg files"
+    - "pdf2svg"
+- pdfcrop :
+    - str
+    - "pdfcrop"
+    - "program that crops pdf files"
+    - "pdfcrop"
+- log_level :
+    - ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+    - "WARNING"
+    - "level at which to report progress"
+    - "WARNING"

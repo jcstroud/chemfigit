@@ -1,0 +1,13 @@
+#! /bin/csh -f
+
+cd ..
+
+echo Password for install:
+sudo make install
+
+cd test
+
+rm -rf output
+
+chemfigit -c settings.yml
+

@@ -1,0 +1,55 @@
+%YAML 1.2
+---
+
+# tex file to process
+tex_file : tex/ChemMove.tex
+
+# tex preamble file; use null or None for no preamble
+preamble : include/Preamble.tex
+
+# list of output formats (png, pdf, and/or svg)
+output_formats : [pdf, svg, png]
+
+# destination directory for output formats
+dest_dir : output/
+
+# pixels per inch for raster (bitmap) images
+raster_density : 300
+
+# quality of raster (bitmap) images
+raster_quality : 100
+
+# antialias raster (btimap) images (True/False)
+raster_antialias : true
+
+# size of document font in pt
+# One of: 10, 11, 12
+font_size : 10
+
+# width of canvas paper (units should be acceptable to the geometry
+# package)
+paperwidth : 30in
+
+# height of canvas paper (units should be acceptable to the geometry
+# package)
+paperheight : 30in
+
+# margin of paper canvas (units should be acceptable to the geometry
+# package)
+margin : 5in
+
+# pdflatex executable
+pdflatex : pdflatex
+
+# converter that produces bitmap images
+convert : convert
+
+# converter that produces svg files
+pdf2svg : pdf2svg
+
+# program that crops pdf files
+pdfcrop : pdfcrop
+
+# level at which to report progress
+# One of: DEBUG, INFO, WARNING, ERROR, CRITICAL
+log_level : INFO
