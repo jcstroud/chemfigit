@@ -2,16 +2,16 @@
 ---
 !!omap
 - tex_file :
-    - str
+    - "file_name"
     - "texfile.tex"
-    - "tex file to process"
+    - "tex file to process; use null or \"\" for newest in 'dest_dir'"
 - dest_dir :
     - str
     - "."
     - "destination directory for output formats"
     - "."
 - preamble :
-    - "optional_file"
+    - "file_name"
     - "preamble.tex"
     - "tex preamble file; use null or None for no preamble"
     - null
@@ -79,7 +79,7 @@
     - "path to pdfcrop, the program that crops pdf files"
     - "pdfcrop"
 - log_level :
-    - ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
-    - "WARNING"
+    - ["debug", "info", "warning", "error", "critical"]
+    - "warning"
     - "level at which to report progress"
     - "WARNING"

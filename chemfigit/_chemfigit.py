@@ -49,7 +49,7 @@ def multisub(text, adict):
   ts = TextSub(adict)
   return ts.sub(text)
 
-def optional_file(a):
+def file_name(a):
   if a == "None":
       a = None
   elif not ((a is None) or (isinstance(a, basestring))):
@@ -114,7 +114,7 @@ def chemfigit(config):
 
   # setup logger
   logger = logging.getLogger(program)
-  log_level = getattr(logging, cfg['log_level'])
+  log_level = getattr(logging, cfg['log_level'].upper())
   logger.setLevel(log_level)
   ch = logging.StreamHandler()
   ch.setLevel(log_level)
@@ -130,8 +130,12 @@ def chemfigit(config):
                                  program,
                                  cfg['temp_base'])
   cfg['abs_dest_dir'] = os.path.abspath(cfg['dest_dir'])
-  cfg['abs_tex_file'] = os.path.abspath(cfg['tex_file'])
+  if not cfg['tex_file']:
+    cfg['tex_file'] = phyles.last_made(cfg['abs_dest_dir'],
+                                                  suffix='.tex')
+    logger.info('Choosing newest tex file: %(tex_file)s', cfg)
   cfg['tex_base'] = os.path.basename(cfg['tex_file'])
+  cfg['abs_tex_file'] = os.path.abspath(cfg['tex_file'])
   cfg['prefix'] = cfg['tex_base'].rsplit(".", 1)[0]
   cfg['full_pdf_file'] = cfg['prefix'] + ".pdf"
 
@@ -233,6 +237,6 @@ def _chemfigit():
   spec = phyles.package_spec(phyles.Undefined, "chemfigit",
                              "schema", "chemfigit.yml")
   converters = {"output_formats": output_formats,
-                "optional_file": optional_file}
+                "file_name": file_name}
   setup = phyles.set_up("chemfigit", __version__, spec, converters)
   phyles.run_main(chemfigit, setup['config'], catchall=ChemFigitError)

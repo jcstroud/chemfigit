@@ -1,6 +1,11 @@
-2013-07-25 Initial release (0.1.0) to github.
+2013-08-06 Changed log levels for chemfigit configuration to be
+           lowercase. Added feature where the last .tex file of
+           dest_dir is used if tex_file is null. Committed
+           0.1.2 to github.
 
 2013-07-25 Made testing script python.
            Improved naming of temp directories.
            Reordered config schema and improved help strings.
-           Released 0.1.1 to github.
+           Committed 0.1.1 to github.
+
+2013-07-25 Initial release (0.1.0) to github.

@@ -1,14 +1,14 @@
 %YAML 1.2
 ---
 
-# tex file to process
+# tex file to process; use null or "" for newest in 'dest_dir'
 tex_file : tex/ChemMove.tex
+
+# destination directory for output formats
+dest_dir : output
 
 # tex preamble file; use null or None for no preamble
 preamble : include/Preamble.tex
-
-# destination directory for output formats
-dest_dir : output/
 
 # list of output formats (png, pdf, and/or svg)
 output_formats : [pdf, svg, png]
@@ -38,18 +38,18 @@ paperheight : 30in
 # package)
 margin : 5in
 
-# pdflatex executable
+# path to the pdflatex executable
 pdflatex : pdflatex
 
-# converter that produces bitmap images
+# path to imagemagick's convert for png, etc.
 convert : convert
 
-# converter that produces svg files
+# path to pdf2svg, the converter that produces svg files
 pdf2svg : pdf2svg
 
-# program that crops pdf files
+# path to pdfcrop, the program that crops pdf files
 pdfcrop : pdfcrop
 
 # level at which to report progress
-# One of: DEBUG, INFO, WARNING, ERROR, CRITICAL
-log_level : INFO
+# One of: debug, info, warning, error, critical
+log_level : info
