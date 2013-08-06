@@ -6,10 +6,20 @@
     - "texfile.tex"
     - "tex file to process; use null or \"\" for newest in 'dest_dir'"
 - dest_dir :
-    - str
+    - "file_name"
     - "."
-    - "destination directory for output formats"
+    - "destination directory for output formats; if null, then the
+      'dest_dir' will be that of 'tex_file'; if both are null, then
+      'dest_dir' is the current directory"
     - "."
+- tex_depth :
+    - int
+    - -1
+    - "if 'text_file' is null, then 'tex_depth' specifies how deep to look
+       into 'dest_dir' for the newest tex file; 0 means only look
+       in 'dest_dir', 1 means include its children, etc.; -1 means to
+       look exhaustively"
+    - -1
 - preamble :
     - "file_name"
     - "preamble.tex"

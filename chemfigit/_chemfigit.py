@@ -129,11 +129,28 @@ def chemfigit(config):
   cfg['temp_dir'] = os.path.join(tempfile.gettempdir(),
                                  program,
                                  cfg['temp_base'])
-  cfg['abs_dest_dir'] = os.path.abspath(cfg['dest_dir'])
-  if not cfg['tex_file']:
-    cfg['tex_file'] = phyles.last_made(cfg['abs_dest_dir'],
-                                                  suffix='.tex')
-    logger.info('Choosing newest tex file: %(tex_file)s', cfg)
+  if cfg['tex_file']:
+    cfg['tex_file'] = os.path.abspath(cfg['tex_file'])
+    if cfg['dest_dir'] is None:
+      cfg['dest_dir'] = os.path.dirname(cfg['tex_file'])
+      cfg['abs_dest_dir'] = cfg['dest_dir']
+    else:
+      cfg['abs_dest_dir'] = os.path.abspath(cfg['dest_dir'])
+    logger.info('Using tex file: %(tex_file)s', cfg)
+  else:
+    if cfg['dest_dir'] is None:
+      curdir = os.path.abspath('.')
+      cfg['tex_file'] = phyles.last_made(curdir, suffix=".tex",
+                                                  depth=cfg['tex_depth'])
+      if cfg['tex_file'] is None:
+        raise ChemFigitError('No tex file found.')
+      cfg['abs_dest_dir'] = os.path.dirname(cfg['tex_file'])
+    else:
+      cfg['abs_dest_dir'] = os.path.abspath(cfg['dest_dir'])
+      cfg['tex_file'] = phyles.last_made(cfg['abs_dest_dir'],
+                                               suffix=".tex",
+                                               depth=cfg['tex_depth'])
+    logger.info('Using newest tex file: %(tex_file)s', cfg)
   cfg['tex_base'] = os.path.basename(cfg['tex_file'])
   cfg['abs_tex_file'] = os.path.abspath(cfg['tex_file'])
   cfg['prefix'] = cfg['tex_base'].rsplit(".", 1)[0]

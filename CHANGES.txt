@@ -1,3 +1,9 @@
+2013-08-06 Added text_depth setting to chefigit configuration which
+           specifies how deep to look into dest_dir if tex_file is null.
+           Also, if dest_dir is null, then the directory is the same
+           as tex_file. If both null, then the directory is the
+           execution directory (pwd). Committed 0.1.3 to github.
+
 2013-08-06 Changed log levels for chemfigit configuration to be
            lowercase. Added feature where the last .tex file of
            dest_dir is used if tex_file is null. Committed
