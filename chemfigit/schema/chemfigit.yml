@@ -30,6 +30,11 @@
     - ["pdf", "svg"]
     - "list of output formats (png, pdf, and/or svg)"
     - ["pdf"]
+- crop_margin :
+    - int
+    - 2
+    - "crop margin in bp (72 bp = 1 in)"
+    - 2
 - raster_density :
     - int
     - 300
@@ -62,7 +67,7 @@
     - "height of canvas paper (units should be acceptable
       to the geometry package)"
     - "30in"
-- margin :
+- papermargin :
     - str
     - "5in"
     - "margin of paper canvas (units should be acceptable

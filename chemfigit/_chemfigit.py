@@ -191,7 +191,7 @@ def chemfigit(config):
   # create the document file
   cfg['geometry'] = ",".join(["paperwidth=%(paperwidth)s",
                               "paperheight=%(paperheight)s",
-                              "margin=%(margin)s"]) % cfg
+                              "margin=%(papermargin)s"]) % cfg
   doc_setup = r"""
                \documentclass[letter,%(font_size)spt]{article}
                \usepackage[%(geometry)s]{geometry}
@@ -230,7 +230,8 @@ def chemfigit(config):
   cfg['pdf_file'] = "%(prefix)s.pdf" % cfg
   cfg['document_pdf'] = cfg['document_prefix'] + ".pdf"
   cfg['cropped_pdf_file'] = "%(prefix)s-crop.pdf" % cfg
-  pdfcrop_command = "%(pdfcrop)s %(document_pdf)s %(cropped_pdf_file)s"
+  pdfcrop_command = ("%(pdfcrop)s --margins %(crop_margin)s " +
+                     "%(document_pdf)s %(cropped_pdf_file)s")
   pdfcrop_command = pdfcrop_command % cfg
   logger.info('running: %s', pdfcrop_command)
   subprocess.call(pdfcrop_command.split(),

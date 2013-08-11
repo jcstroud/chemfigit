@@ -21,6 +21,9 @@ preamble : include/Preamble.tex
 # list of output formats (png, pdf, and/or svg)
 output_formats : [pdf, svg, png]
 
+# crop margin in bp (72 bp = 1 in)
+crop_margin : 2
+
 # pixels per inch for raster (bitmap) images
 raster_density : 300
 
@@ -44,7 +47,7 @@ paperheight : 30in
 
 # margin of paper canvas (units should be acceptable to the geometry
 # package)
-margin : 5in
+papermargin : 5in
 
 # path to the pdflatex executable
 pdflatex : pdflatex
