@@ -24,6 +24,11 @@ output_formats : [pdf, svg, png]
 # crop margin in bp (72 bp = 1 in)
 crop_margin : 2
 
+# color to make transparent in raster (bitmap) images for those
+# formats that support transparency; use "none" for no imposed
+# transparency; see http://www.imagemagick.org/script/color.php
+transparent : white
+
 # pixels per inch for raster (bitmap) images
 raster_density : 300
 

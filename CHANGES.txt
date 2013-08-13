@@ -1,3 +1,6 @@
+2013-08-13 Added "transparent" setting for raster images.
+           Committed 0.1.5 to github.
+
 2013-08-11 Changed "margin" setting to "papermargin" setting
            and added "crop_margin" setting that allows adding
            margins to the cropped document. Committed 0.1.4 to github.

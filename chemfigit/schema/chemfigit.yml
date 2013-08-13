@@ -9,8 +9,8 @@
     - "file_name"
     - "."
     - "destination directory for output formats; if null, then the
-      'dest_dir' will be that of 'tex_file'; if both are null, then
-      'dest_dir' is the current directory"
+       'dest_dir' will be that of 'tex_file'; if both are null, then
+       'dest_dir' is the current directory"
     - "."
 - tex_depth :
     - int
@@ -35,6 +35,14 @@
     - 2
     - "crop margin in bp (72 bp = 1 in)"
     - 2
+- transparent :
+    - str
+    - "white"
+    - "color to make transparent in raster (bitmap) images
+       for those formats that support transparency; use \"none\"
+       for no imposed transparency; see
+       http://www.imagemagick.org/script/color.php"
+    - "none"
 - raster_density :
     - int
     - 300
@@ -59,19 +67,19 @@
     - str
     - "30in"
     - "width of canvas paper (units should be acceptable
-      to the geometry package)"
+       to the geometry package)"
     - "30in"
 - paperheight :
     - str
     - "30in"
     - "height of canvas paper (units should be acceptable
-      to the geometry package)"
+       to the geometry package)"
     - "30in"
 - papermargin :
     - str
     - "5in"
     - "margin of paper canvas (units should be acceptable
-      to the geometry package)"
+       to the geometry package)"
     - "5in"
 - pdflatex :
     - str

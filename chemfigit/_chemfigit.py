@@ -94,6 +94,7 @@ def do_png(cfg, logger):
   command = """
             %(convert)s -density %(raster_density)s
                         -trim %(cropped_pdf_file)s
+                        -transparent %(transparent)s
                         -quality %(raster_quality)s
                         %(antialias_flag)s
                         %(png_file)s
