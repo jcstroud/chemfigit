@@ -28,7 +28,7 @@
 - output_formats :
     - "output_formats"
     - ["pdf", "svg"]
-    - "list of output formats (png, pdf, and/or svg)"
+    - "list of output formats (png, pdf, eps, and/or svg)"
     - ["pdf"]
 - crop_margin :
     - int
@@ -91,6 +91,11 @@
     - "convert"
     - "path to imagemagick's convert for png, etc."
     - "convert"
+- pdftops :
+    - str
+    - "pdftops"
+    - "path to pdftops, the converter that produces eps files"
+    - "pdftops"
 - pdf2svg :
     - str
     - "pdf2svg"

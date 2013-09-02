@@ -14,7 +14,7 @@ import phyles
 from _version import __version__
 
 
-FORMATS = ["pdf", "svg", "png"]
+FORMATS = ["pdf", "eps", "svg", "png"]
 
 class ChemFigitError(Exception):
   pass
@@ -85,6 +85,16 @@ def do_svg(cfg, logger):
                   stderr=cfg['err_log_file'])
   shutil.copy(cfg['svg_file'], cfg['abs_dest_dir'])
 
+def do_eps(cfg, logger):
+  cfg['eps_file'] = cfg['prefix'] + ".eps"
+  command = ("%(pdftops)s -f 1 -l 1 " +
+             "-eps %(cropped_pdf_file)s %(eps_file)s") % cfg
+  logger.info("running: %s", command)
+  subprocess.call(command.split(),
+                  stdout=cfg['out_log_file'],
+                  stderr=cfg['err_log_file'])
+  shutil.copy(cfg['eps_file'], cfg['abs_dest_dir'])
+
 def do_png(cfg, logger):
   cfg['png_file'] = cfg['prefix'] + ".png"
   if cfg['raster_antialias']:
@@ -106,7 +116,7 @@ def do_png(cfg, logger):
                   stderr=cfg['err_log_file'])
   shutil.copy(cfg['png_file'], cfg['abs_dest_dir'])
 
-OUTPUTS = {'pdf' : do_pdf, 'png' : do_png, 'svg' : do_svg}
+OUTPUTS = {'pdf': do_pdf, 'eps': do_eps, 'png': do_png, 'svg': do_svg}
 
 def chemfigit(config):
   program = "chemfigit"

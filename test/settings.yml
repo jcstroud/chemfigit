@@ -18,8 +18,8 @@ tex_depth : -1
 # tex preamble file; use null or None for no preamble
 preamble : include/Preamble.tex
 
-# list of output formats (png, pdf, and/or svg)
-output_formats : [pdf, svg, png]
+# list of output formats (png, pdf, eps, and/or svg)
+output_formats : [pdf, eps, svg, png]
 
 # crop margin in bp (72 bp = 1 in)
 crop_margin : 2
@@ -30,7 +30,7 @@ crop_margin : 2
 transparent : white
 
 # pixels per inch for raster (bitmap) images
-raster_density : 300
+raster_density : 600
 
 # quality of raster (bitmap) images
 raster_quality : 100
@@ -59,6 +59,9 @@ pdflatex : pdflatex
 
 # path to imagemagick's convert for png, etc.
 convert : convert
+
+# path to pdftops, the converter that produces eps files
+pdftops : pdftops
 
 # path to pdf2svg, the converter that produces svg files
 pdf2svg : pdf2svg
