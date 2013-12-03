@@ -56,20 +56,14 @@ def file_name(a):
       raise ValueError("%s is not a string or None" % a)
   return a
 
+def path_list(a):
+  return file_name(a)
+
 def output_formats(alist):
   for a in alist:
     if a not in FORMATS:
       raise ValueError("Format '%s' is not in %s." % (a, FORMATS))
   return alist
-
-def process_includes(cfg, tex):
-  input_rgx = re.compile(r'\input{([^}]+)}')
-  originals = input_rgx.findall(tex)
-  targets = [os.path.basename(orig) for orig in originals]
-  substitutions = dict(zip(originals, targets))
-  for orig in originals:
-    shutil.copy(orig, cfg['temp_dir'])
-  return multisub(tex, substitutions)
 
 def do_pdf(cfg, logger):
   cfg['abs_pdf_file'] = os.path.join(cfg['abs_dest_dir'],
@@ -178,17 +172,38 @@ def chemfigit(config):
   if not os.path.exists(cfg['abs_dest_dir']):
     logger.info('Making directory: %s', cfg['abs_dest_dir'])
     os.makedirs(cfg['abs_dest_dir'])
+
+  # insert tex_includes into TEXINPUTS
+
+  if cfg['tex_includes'] is not None:
+    inputs = cfg['tex_includes'].split(":")
+    inputs = [os.path.abspath(p) for p in inputs]
+    s_inputs = ":".join(inputs)
+    os.environ['TEXINPUTS'] = ":".join([s_inputs, os.environ['TEXINPUTS']])
+    os.system('echo $TEXINPUTS')
+    # raise SystemExit
   
   # do preamble
   if cfg['preamble'] is not None:
-    with open(cfg['preamble']) as f:
-      original_preamble_text = f.read()
+    found_preamble = False
+    for p in inputs:
+      preamble_path = os.path.join(p, cfg['preamble'])
+      if os.path.exists(preamble_path):
+        cfg['preamble_path'] = preamble_path
+        found_preamble = True
+        break
+    if not found_preamble:
+      tplt = "Could not find preamble '%s'."
+      msg = tplt % (cfg['preamble'],)
+      raise ChemFigitError(msg)
+    with open(preamble_path) as f:
+      preamble_text = f.read()
     cfg['preamble_base'] = os.path.basename(cfg['preamble'])
-    new_preamble_text = process_includes(cfg, original_preamble_text)
     new_preamble_file = os.path.join(cfg['temp_dir'],
                                      cfg['preamble_base'])
     with open(new_preamble_file, "w") as f:
-      f.write(new_preamble_text)
+      f.write(preamble_text)
+
 
   # copy the tex file
   logger.info("copying %s to %s", cfg['abs_tex_file'],
@@ -266,6 +281,7 @@ def _chemfigit():
   spec = phyles.package_spec(phyles.Undefined, "chemfigit",
                              "schema", "chemfigit.yml")
   converters = {"output_formats": output_formats,
-                "file_name": file_name}
+                "file_name": file_name,
+                "path_list": path_list}
   setup = phyles.set_up("chemfigit", __version__, spec, converters)
   phyles.run_main(chemfigit, setup['config'], catchall=ChemFigitError)

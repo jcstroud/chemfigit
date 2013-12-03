@@ -20,10 +20,16 @@
        in 'dest_dir', 1 means include its children, etc.; -1 means to
        look exhaustively"
     - -1
+- tex_includes :
+    - "path_list"
+    - "include:../Pictures"
+    - "inserted into TEXINPUTS, use null for no change to TEXINPUTS"
+    - null
 - preamble :
     - "file_name"
     - "preamble.tex"
-    - "tex preamble file; use null or None for no preamble"
+    - "tex preamble file; use null or None for no preamble;
+       should be in TEXINPUTS path"
     - null
 - output_formats :
     - "output_formats"

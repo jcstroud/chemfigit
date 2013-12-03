@@ -15,8 +15,12 @@ dest_dir : output
 # exhaustively
 tex_depth : -1
 
+# inserted into TEXINPUTS, use null for no change to TEXINPUTS
+tex_includes: include
+
 # tex preamble file; use null or None for no preamble
-preamble : include/Preamble.tex
+# should be in TEXINPUTS path
+preamble : Preamble.tex
 
 # list of output formats (png, pdf, eps, and/or svg)
 output_formats : [pdf, eps, svg, png]
